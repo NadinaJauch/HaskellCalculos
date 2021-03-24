@@ -1,0 +1,16 @@
+--Calculo el número de raíces de la función
+
+nSoluciones :: Float -> Float -> Float -> Float
+nSoluciones a b c =	let delta = (b^2-(4*a*c))
+			  in	if delta > 0
+				    then 2
+		   else	if delta == 0
+				   then 1
+			 else 0
+
+--Calculo ceros de la función
+fResolvente :: Float -> Float -> Float -> [Float]
+fResolvente a b c	| nSoluciones a b c == 1 = [-b/(2*a)]
+				          | nSoluciones a b c == 2 = [((-b-discr)/(2*a)),((-b+discr)/(2*a))]
+				          | nSoluciones a b c == 0 = []
+					         where discr = (sqrt(b^2-(4*a*c)))
